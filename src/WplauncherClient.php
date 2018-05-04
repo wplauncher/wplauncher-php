@@ -8,11 +8,22 @@ use Psr\Http\Message\ResponseInterface;
 
 class WplauncherClient
 {
+    
+	/**
+	 * @var Client
+	 * protected shares this with the extended classes
+	 */
+	protected $client;
+	
+    public function __construct()
+    {
+    }
+	
     /**
      * Create a new WPLauncher Instance
      */
-    public function __construct($access_token)
-    {
+	public function setApiKey($access_token)
+	{
 		$wplauncher_guzzle = new Client(
 		    [
 		        'base_uri' => 'https://api.wplauncher.com/api/v1/',
@@ -24,7 +35,7 @@ class WplauncherClient
 		    ]
 		);
 		$this->client = $wplauncher_guzzle;
-    }
+	}
 	
 	/**
 	 * Check the response status code.
