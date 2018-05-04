@@ -72,21 +72,29 @@ class WplauncherClient
 	    return json_decode($response->getBody());
 	}
 	/**
-	 * Creates a new task
+	 * Creates a new Instance
 	 *
-	 * @param string $name
-	 * @param int $list_id
-	 * @param array $task
+	 * @param array $instance
 	 *
 	 * @return mixed
 	 */
-	public function createTask($name, $list_id, $task = []) {
-	    if (!is_numeric($list_id)) {
-	        throw new \InvalidArgumentException('The list id must be numeric.');
-	    }
-	    $task['name'] = $name;
-	    $task['list_id'] = $list_id;
-	    $response = $this->client->post('tasks', ['body' => json_encode($task)]);
+	public function createInstance($instance = []) {
+	    /*if (!is_numeric($instance)) {
+	        throw new \InvalidArgumentException('The instance id must be numeric.');
+	    }*/
+	    $response = $this->client->post('instances', ['body' => json_encode($instance)]);
+	    $this->checkResponseStatusCode($response, 201);
+	    return json_decode($response->getBody());
+	}
+	/**
+	 * Creates a new Plan
+	 *=
+	 * @param array $plan
+	 *
+	 * @return mixed
+	 */
+	public function createPlan($plan = []) {
+	    $response = $this->client->post('plan', ['body' => json_encode($plan)]);
 	    $this->checkResponseStatusCode($response, 201);
 	    return json_decode($response->getBody());
 	}
