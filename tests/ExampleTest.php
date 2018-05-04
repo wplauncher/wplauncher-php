@@ -1,6 +1,6 @@
 <?php
 
-namespace League\Skeleton;
+namespace wplauncher\wplauncher;
 
 class ExampleTest extends \PHPUnit\Framework\TestCase
 {

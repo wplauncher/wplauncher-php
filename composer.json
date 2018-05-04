@@ -1,23 +1,24 @@
 {
-    "name": ":vendor/:package_name",
+    "name": "wplauncher/wplauncher-php",
     "type": "library",
-    "description": ":package_description",
+    "description": "The WPLauncher PHP SDK allows you to easily turn your website into a WordPress Hosting company by providing a simple way to interact with WPLauncher's API.",
     "keywords": [
-        ":vendor",
-        ":package_name"
+        "wplauncher",
+        "wplauncher-php"
     ],
-    "homepage": "https://github.com/:vendor/:package_name",
+    "homepage": "https://github.com/wplauncher/wplauncher-php",
     "license": "MIT",
     "authors": [
         {
-            "name": ":author_name",
-            "email": ":author_email",
-            "homepage": ":author_website",
+            "name": "Ben Shadle",
+            "email": "wplauncher@gmail.com",
+            "homepage": "https://www.wplauncher.com",
             "role": "Developer"
         }
     ],
     "require": {
-        "php" : "~5.6|~7.0"
+        "php" : "~5.6|~7.0",
+		"guzzlehttp/guzzle": "^6.3"
     },
     "require-dev": {
         "phpunit/phpunit" : ">=5.4.3",
@@ -25,12 +26,12 @@
     },
     "autoload": {
         "psr-4": {
-            ":vendor\\:package_name\\": "src"
+            "wplauncher\\wplauncher-php\\": "src"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            ":vendor\\:package_name\\": "tests"
+            "wplauncher\\wplauncher-php\\": "tests"
         }
     },
     "scripts": {

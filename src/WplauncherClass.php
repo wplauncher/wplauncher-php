@@ -1,11 +1,11 @@
 <?php
 
-namespace League\Skeleton;
+namespace wplauncher\wplauncher;
 
-class SkeletonClass
+class WplauncherClass
 {
     /**
-     * Create a new Skeleton Instance
+     * Create a new WPLauncher Instance
      */
     public function __construct()
     {
