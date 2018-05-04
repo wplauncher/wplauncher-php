@@ -33,8 +33,8 @@ $ composer require wplauncher/wplauncher-php
 ## Usage
 
 ``` php
-$wplauncher = new Wplauncher();
-$wplauncher->createInstance();
+$wplauncher = new Wplauncher\Instance();
+$wplauncher->create();
 ```
 
 ## Change log

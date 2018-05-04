@@ -7,10 +7,10 @@ use Wplauncher\Plan;
 $loader = new Twig_Loader_Filesystem(__DIR__ . '/examples/templates');
 $twig = new Twig_Environment($loader);
 
-$wplauncher = new Wplauncher\Plan($wplauncher_access_token);
+$wplauncherPlan = new Wplauncher\Plan($wplauncher_access_token);
 
 try {
-    $plans = $wplauncher->getPlans();
+    $plans = $wplauncherPlan->all();
     echo $twig->render('plan.html.twig', array('plans' => $plans));
 }
 catch (\Exception $e) {

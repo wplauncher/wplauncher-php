@@ -5,6 +5,7 @@ namespace Wplauncher;
 use GuzzleHttp\ClientInterface;
 use GuzzleHttp\Client;
 use Psr\Http\Message\ResponseInterface;
+use Wplauncher\WplauncherClient;
 
 class StripeConnect extends WplauncherClient
 {
@@ -14,7 +15,7 @@ class StripeConnect extends WplauncherClient
 	 *
 	 * @return array
 	 */
-	public function getStatus() {
+	public function get() {
 	    $response = $this->client->get('connect/stripe');
 	    $this->checkResponseStatusCode($response, 200);
 	    return json_decode($response->getBody(), true);
