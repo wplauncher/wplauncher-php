@@ -34,7 +34,10 @@ $ composer require wplauncher/wplauncher-php
 
 ``` php
 $wplauncher = new Wplauncher\Instance();
-$wplauncher->create();
+$wplauncher->get($instance_id);
+$wplauncher->create($instance);
+$wplauncher->update($instance_id);
+$wplauncher->all($conditions);
 ```
 
 ## Change log
