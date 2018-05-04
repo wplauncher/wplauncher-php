@@ -37,7 +37,7 @@ $ composer require wplauncher/wplauncher-php
 
 ``` php
 $wplauncher = new Wplauncher();
-echo $wplauncher->getPlan($plan_id);
+$wplauncher->createInstance();
 ```
 
 ## Change log
