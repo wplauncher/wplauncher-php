@@ -33,11 +33,12 @@ $ composer require wplauncher/wplauncher-php
 ## Usage
 
 ``` php
-$wplauncher = new Wplauncher\Instance();
-$wplauncher->get($instance_id);
-$wplauncher->create($instance);
-$wplauncher->update($instance_id);
-$wplauncher->all($conditions);
+\Wplauncher\WplauncherClient::setApiKey($wplauncher_access_token);
+$instance = \Wplauncher\Instance::create($instance);
+$instance = \Wplauncher\Instance::retrieve($instance_id);
+$instance = \Wplauncher\Instance::update($instance);
+$instance = \Wplauncher\Instance::delete($instance_id);
+$instances = \Wplauncher\Instance::all($conditions);
 ```
 
 ## Change log

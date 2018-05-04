@@ -15,7 +15,7 @@ class StripeConnect extends WplauncherClient
 	 *
 	 * @return array
 	 */
-	public static function get() {
+	public static function retrieve() {
 	    $response = self::$client->get('connect/stripe');
 	    self::checkResponseStatusCode($response, 200);
 	    return json_decode($response->getBody(), true);
