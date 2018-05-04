@@ -36,8 +36,8 @@ $ composer require wplauncher/wplauncher-php
 ## Usage
 
 ``` php
-$skeleton = new wplauncher\wplauncher-php();
-echo $skeleton->echoPhrase('Hello, League!');
+$wplauncher = new Wplauncher();
+echo $wplauncher->getPlan($plan_id);
 ```
 
 ## Change log

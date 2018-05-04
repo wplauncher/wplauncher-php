@@ -42,17 +42,17 @@ class WplauncherClient
 	    return json_decode($response->getBody(), true);
 	}
 	/**
-	 * Returns a specific list
+	 * Returns a specific plan
 	 *
 	 * @param int $id
 	 *
 	 * @return mixed
 	 */
-	public function getList($id) {
+	public function getPlan($id) {
 	    if (!is_numeric($id)) {
-	        throw new \InvalidArgumentException('The list id must be numeric.');
+	        throw new \InvalidArgumentException('The plan id must be numeric.');
 	    }
-	    $response = $this->client->get('lists/' . $id);
+	    $response = $this->client->get('plans/' . $id);
 	    $this->checkResponseStatusCode($response, 200);
 	    return json_decode($response->getBody(), true);
 	}
