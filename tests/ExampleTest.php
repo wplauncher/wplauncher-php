@@ -1,6 +1,6 @@
 <?php
 
-namespace wplauncher\wplauncher;
+namespace Wplauncher;
 
 class ExampleTest extends \PHPUnit\Framework\TestCase
 {
