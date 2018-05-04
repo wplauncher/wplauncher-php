@@ -26,12 +26,12 @@
     },
     "autoload": {
         "psr-4": {
-            "wplauncher\\wplauncher-php\\": "src"
+            "Wplauncher\\": "src"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "wplauncher\\wplauncher-php\\": "tests"
+            "Wplauncher\\": "tests"
         }
     },
     "scripts": {
