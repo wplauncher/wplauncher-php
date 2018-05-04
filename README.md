@@ -57,9 +57,9 @@ If you discover any security related issues, please email wplauncher@gmail.com i
 
 ## Credits
 
-- [Ben Shadle][https://www.wplauncher.com]
-- [Lee Shadle][https://www.wplauncher.com]
-- [All Contributors][https://www.wplauncher.com]
+- [Ben Shadle](https://www.wplauncher.com)
+- [Lee Shadle](https://www.wplauncher.com)
+- [All Contributors](https://www.wplauncher.com)
 
 ## License
 
