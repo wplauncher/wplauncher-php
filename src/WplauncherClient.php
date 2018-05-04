@@ -22,7 +22,7 @@ class WplauncherClient
     /**
      * Create a new WPLauncher Instance
      */
-	public function setApiKey($access_token)
+	public static function setApiKey($access_token)
 	{
 		$wplauncher_guzzle = new Client(
 		    [
@@ -45,7 +45,7 @@ class WplauncherClient
 	 *
 	 * @throws \RuntimeException on unexpected status code
 	 */
-	private function checkResponseStatusCode(ResponseInterface $response, $expectedStatusCode)
+	protected function checkResponseStatusCode(ResponseInterface $response, $expectedStatusCode)
 	{
 	    $statusCode = $response->getStatusCode();
 	    if ($statusCode !== $expectedStatusCode) {

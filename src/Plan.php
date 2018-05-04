@@ -16,7 +16,7 @@ class Plan extends WplauncherClient
 	 *
 	 * @return mixed
 	 */
-	public function get($id) {
+	public static function get($id) {
 	    if (!is_numeric($id)) {
 	        throw new \InvalidArgumentException('The plan id must be numeric.');
 	    }
@@ -31,7 +31,7 @@ class Plan extends WplauncherClient
 	 *
 	 * @return mixed
 	 */
-	public function create($plan = []) {
+	public static function create($plan = []) {
 		/*
 		    'name' => 'required|string',
 			'instance_type_id' => 'required|exists:instance_types,id|integer',
@@ -57,7 +57,7 @@ class Plan extends WplauncherClient
 	 *
 	 * @return array()
 	 */
-	public function all($conditions) {
+	public static function all($conditions) {
 	    // user_id doesn't need to be set but if it is then it has to be numeric
 		 if (isset($conditions['user_id']) && !is_numeric($conditions['user_id'])) {
 	        throw new \InvalidArgumentException('The user id must be numeric.');
@@ -74,7 +74,7 @@ class Plan extends WplauncherClient
 	 * @param array $plan
 	 * @return mixed
 	 */
-	public function update($plan) {
+	public static function update($plan) {
 	    if (!is_numeric($plan['id'])) {
 	        throw new \InvalidArgumentException('The plan id must be numeric.');
 	    } 

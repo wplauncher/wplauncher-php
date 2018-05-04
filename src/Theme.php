@@ -15,7 +15,7 @@ class Theme extends WplauncherClient
 	 *
 	 * @return array
 	 */
-	public function all() {
+	public static function all() {
 	    $response = $this->client->get('instances');
 	    $this->checkResponseStatusCode($response, 200);
 	    return json_decode($response->getBody(), true);
@@ -27,7 +27,7 @@ class Theme extends WplauncherClient
 	 *
 	 * @return mixed
 	 */
-	public function get($id) {
+	public static function get($id) {
 	    if (!is_numeric($id)) {
 	        throw new \InvalidArgumentException('The instance id must be numeric.');
 	    }
@@ -42,7 +42,7 @@ class Theme extends WplauncherClient
 	 *
 	 * @return mixed
 	 */
-	public function create($instance = []) {
+	public static function create($instance = []) {
 		/*
 		    'name' => 'required|string',
 			'instance_type_id' => 'required|exists:instance_types,id|integer',
@@ -68,7 +68,7 @@ class Theme extends WplauncherClient
 	 *
 	 * @return array()
 	 */
-	public function all($conditions) {
+	public static function all($conditions) {
 	    // user_id doesn't need to be set but if it is then it has to be numeric
 		 if (isset($conditions['user_id']) && !is_numeric($conditions['user_id'])) {
 	        throw new \InvalidArgumentException('The user id must be numeric.');
@@ -84,7 +84,7 @@ class Theme extends WplauncherClient
 	 * @param array $instance
 	 * @return mixed
 	 */
-	public function update($instance) {
+	public static function update($instance) {
 	    if (!is_numeric($instance['id'])) {
 	        throw new \InvalidArgumentException('The instance id must be numeric.');
 	    } 
