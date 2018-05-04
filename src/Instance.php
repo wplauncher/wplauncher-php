@@ -21,8 +21,8 @@ class Instance extends WplauncherClient
 	    if (!is_numeric($id)) {
 	        throw new \InvalidArgumentException('The instance id must be numeric.');
 	    }
-	    $response = $this->client->get('instances/' . $id);
-	    $this->checkResponseStatusCode($response, 200);
+	    $response = self::$client->get('instances/' . $id);
+	    self::checkResponseStatusCode($response, 200);
 	    return json_decode($response->getBody(), true);
 	}
 	/**
@@ -47,8 +47,8 @@ class Instance extends WplauncherClient
      	    throw new \InvalidArgumentException('The user id must be numeric.');
      	}*/
 		
-		$response = $this->client->post('instance', ['body' => json_encode($instance)]);
-	    $this->checkResponseStatusCode($response, 201);
+		$response = self::$client->post('instance', ['body' => json_encode($instance)]);
+	    self::checkResponseStatusCode($response, 201);
 	    return json_decode($response->getBody());
 	}
 	/**
@@ -63,8 +63,8 @@ class Instance extends WplauncherClient
 		 if (isset($conditions['user_id']) && !is_numeric($conditions['user_id'])) {
 	         throw new \InvalidArgumentException('The user id must be numeric.');
 	     }
-	     $response = $this->client->get('instances', ['query' => [$conditions]]);
-	     $this->checkResponseStatusCode($response, 200);
+	     $response = self::$client->get('instances', ['query' => [$conditions]]);
+	     self::checkResponseStatusCode($response, 200);
 	     return json_decode($response->getBody());
 	 }
 	 
@@ -81,8 +81,8 @@ class Instance extends WplauncherClient
 		if (!is_array($instance)) {
 	        throw new \InvalidArgumentException('The instance must be an array.');
 	    }
-	    $response = $this->client->patch('instances/' . $instance['id'], ['body' => json_encode($instance)]);
-	    $this->checkResponseStatusCode($response, 200);
+	    $response = self::$client->patch('instances/' . $instance['id'], ['body' => json_encode($instance)]);
+	    self::checkResponseStatusCode($response, 200);
 	    return json_decode($response->getBody());
 	}
 	

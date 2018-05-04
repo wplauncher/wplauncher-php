@@ -20,8 +20,8 @@ class Plan extends WplauncherClient
 	    if (!is_numeric($id)) {
 	        throw new \InvalidArgumentException('The plan id must be numeric.');
 	    }
-	    $response = $this->client->get('plans/' . $id);
-	    $this->checkResponseStatusCode($response, 200);
+	    $response = self::$client->get('plans/' . $id);
+	    self::checkResponseStatusCode($response, 200);
 	    return json_decode($response->getBody(), true);
 	}
 	/**
@@ -46,8 +46,8 @@ class Plan extends WplauncherClient
      	    throw new \InvalidArgumentException('The user id must be numeric.');
      	}*/
 		
-		$response = $this->client->post('plan', ['body' => json_encode($plan)]);
-	    $this->checkResponseStatusCode($response, 201);
+		$response = self::$client->post('plan', ['body' => json_encode($plan)]);
+	    self::checkResponseStatusCode($response, 201);
 	    return json_decode($response->getBody());
 	}
 	/**
@@ -62,8 +62,8 @@ class Plan extends WplauncherClient
 		 if (isset($conditions['user_id']) && !is_numeric($conditions['user_id'])) {
 	        throw new \InvalidArgumentException('The user id must be numeric.');
 	    }
-    	 $response = $this->client->get('plans', ['query' => [$conditions]]);
-	     $this->checkResponseStatusCode($response, 200);
+    	 $response = self::$client->get('plans', ['query' => [$conditions]]);
+	     self::checkResponseStatusCode($response, 200);
 	     return json_decode($response->getBody());
 	 }
 	 
@@ -81,8 +81,8 @@ class Plan extends WplauncherClient
 		if (!is_array($plan)) {
 	        throw new \InvalidArgumentException('The plan must be an array.');
 	    }
-	    $response = $this->client->patch('plans/' . $plan['id'], ['body' => json_encode($plan)]);
-	    $this->checkResponseStatusCode($response, 200);
+	    $response = self::$client->patch('plans/' . $plan['id'], ['body' => json_encode($plan)]);
+	    self::checkResponseStatusCode($response, 200);
 	    return json_decode($response->getBody());
 	}
 	

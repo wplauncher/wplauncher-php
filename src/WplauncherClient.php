@@ -13,7 +13,7 @@ class WplauncherClient
 	 * @var Client
 	 * protected shares this with the extended classes
 	 */
-	protected $client;
+	public static $client;
 	
     public function __construct()
     {
@@ -34,7 +34,7 @@ class WplauncherClient
 				]
 		    ]
 		);
-		$this->client = $wplauncher_guzzle;
+		self::$client = $wplauncher_guzzle;
 	}
 	
 	/**
@@ -45,7 +45,7 @@ class WplauncherClient
 	 *
 	 * @throws \RuntimeException on unexpected status code
 	 */
-	protected function checkResponseStatusCode(ResponseInterface $response, $expectedStatusCode)
+	public static function checkResponseStatusCode(ResponseInterface $response, $expectedStatusCode)
 	{
 	    $statusCode = $response->getStatusCode();
 	    if ($statusCode !== $expectedStatusCode) {
