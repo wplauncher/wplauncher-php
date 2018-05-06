@@ -4,101 +4,113 @@ namespace Wplauncher;
 
 use Wplauncher\Wplauncher;
 
+/**
+ * Class LaunchButton
+ *
+ * @property string $name
+ * @property string $theme
+ * @property array $plugin
+ * @property string $plan1_monthly_stripe
+ * @property string $plan1_annually_stripe
+ * @property string $plan2_monthly_stripe
+ * @property string $plan2_annually_stripe
+ * @property string $plan3_monthly_stripe
+ * @property string $plan3_annually_stripe
+ *
+ * @package Wplauncher
+ */
+
 class LaunchButton extends Wplauncher
 {
-    
-    /**
-     * Creates a new Launch Button
-     *=
-     * @param array $launch_button
+    public static $object_url = 'launch-buttons';
+	/**
+     * Creates a new Object
+     *
+     * @param array $params
+     * @param array $opts
      *
      * @return mixed
      */
-    public static function create($launch_button = [])
-    {
+    public static function create($params = null, $opts = null)
+    {   
         /*
-		    'name' => 'required|string',
-			'instance_type_id' => 'required|exists:instance_types,id|integer',
-			'price' => 'bail|required|integer',
-			'interval' => 'bail|required|exists:intervals,name|string',
-			'interval_count' => 'bail|required|integer',
-			'currency' => 'bail|required|string',
-			'trial_period_days' => 'integer',
-			'environment' => 'string'
-		*
 		if (!is_numeric($user_id)) {
      	    throw new \InvalidArgumentException('The user id must be numeric.');
      	}*/
-        
-        $response = self::$client->post('launch-button', ['body' => json_encode($launch_button)]);
-        self::checkResponseStatusCode($response, 201);
-        return json_decode($response->getBody());
+		
+		return self::_create($params, $opts);
     }
     /**
-     * Returns a specific launch button
+     * Returns a specific object
      *
      * @param int $id
+     * @param array $opts
      *
      * @return mixed
      */
-    public static function retrieve($id)
+    public static function retrieve($id, $opts = null)
     {
+        /*
         if (!is_numeric($id)) {
             throw new \InvalidArgumentException('The launch button id must be numeric.');
         }
-        $response = self::$client->get('launch-buttons/' . $id);
-        self::checkResponseStatusCode($response, 200);
-        return json_decode($response->getBody(), true);
+		*/
+		return self::_retrieve($id, $opts);
     }
     /**
-     * Updates a launch button
+     * Updates an object
      *
-     * @param array $launch_button
+	 * @param int $id
+     * @param array $params
+     * @param array $opts
      * @return mixed
      */
-    public static function update($launch_button)
+    public static function update($id, $params = null, $opts = null)
     {
-        if (!is_numeric($launch_button['id'])) {
+        /*
+        if (!is_numeric($params['id'])) {
             throw new \InvalidArgumentException('The launch button id must be numeric.');
         }
-        if (!is_array($launch_button)) {
-            throw new \InvalidArgumentException('The launch button must be an array.');
+        if (!is_array($params)) {
+            throw new \InvalidArgumentException('Params must be an array.');
         }
-        $response = self::$client->patch('launch-buttons/' . $launch_button['id'], ['body' => json_encode($launch_button)]);
-        self::checkResponseStatusCode($response, 200);
-        return json_decode($response->getBody());
+		*/
+		return self::_update($id, $params, $opts);
     }
     /**
-     * Delete the provided launch button
+     * Delete the provided object
      *
-     * @param array $launch_button
+	 * @param int $id
+     * @param array $params
+     * @param array $opts
+	 *
+     * @return array()
+     */
+    public static function delete($id, $params = null, $opts = null)
+    {
+        /*
+		if (isset($params['id']) && !is_numeric($params['id'])) {
+            throw new \InvalidArgumentException('The launch button id must be numeric.');
+        }
+		*/
+		return self::_delete($id, $params, $opts);
+    }
+    /**
+     * Return all the objects of a given affiliate's user
+     *
+     * @param array $params
+     * @param array $opts
      *
      * @return array()
      */
-    public static function delete($launch_button)
+    public static function all($params = null, $opts = null)
     {
-        if (isset($launch_button['id']) && !is_numeric($launch_button['id'])) {
-            throw new \InvalidArgumentException('The launch button id must be numeric.');
-        }
-        $response = self::$client->delete('launch-buttons', ['query' => [$launch_button]]);
-        self::checkResponseStatusCode($response, 200);
-        return json_decode($response->getBody());
-    }
-    /**
-     * Return all the launch buttons of a given affiliate's user
-     *
-     * @param array $conditions
-     *
-     * @return array()
-     */
-    public static function all($conditions)
-    {
-        // user_id doesn't need to be set but if it is then it has to be numeric
-        if (isset($conditions['user_id']) && !is_numeric($conditions['user_id'])) {
+        /*
+		// user_id doesn't need to be set but if it is then it has to be numeric
+        if (isset($params['user_id']) && !is_numeric($params['user_id'])) {
             throw new \InvalidArgumentException('The user id must be numeric.');
         }
-        $response = self::$client->get('launch-buttons', ['query' => [$conditions]]);
-        self::checkResponseStatusCode($response, 200);
-        return json_decode($response->getBody());
-    }
+		*/
+		return self::_all($params, $opts);
+	}
 }

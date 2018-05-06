@@ -6,15 +6,17 @@ use Wplauncher\Wplauncher;
 
 class Plan extends Wplauncher
 {
-    /**
-     * Creates a new Plan
-     *=
-     * @param array $plan
+    public static $object_url = 'plans';
+	/**
+     * Creates a new Object
+     *
+     * @param array $params
+     * @param array $opts
      *
      * @return mixed
      */
-    public static function create($plan = [])
-    {
+    public static function create($params = null, $opts = null)
+    {   
         /*
 		    'name' => 'required|string',
 			'instance_type_id' => 'required|exists:instance_types,id|integer',
@@ -28,77 +30,80 @@ class Plan extends Wplauncher
 		if (!is_numeric($user_id)) {
      	    throw new \InvalidArgumentException('The user id must be numeric.');
      	}*/
-        
-        $response = self::$client->post('plan', ['body' => json_encode($plan)]);
-        self::checkResponseStatusCode($response, 201);
-        return json_decode($response->getBody());
+		
+		return self::_create($params, $opts);
     }
     /**
-     * Returns a specific plan
+     * Returns a specific object
      *
      * @param int $id
+     * @param array $opts
      *
      * @return mixed
      */
-    public static function retrieve($id)
+    public static function retrieve($id, $opts = null)
     {
+        /*
         if (!is_numeric($id)) {
-            throw new \InvalidArgumentException('The plan id must be numeric.');
+            throw new \InvalidArgumentException('The launch button id must be numeric.');
         }
-        $response = self::$client->get('plans/' . $id);
-        self::checkResponseStatusCode($response, 200);
-        return json_decode($response->getBody(), true);
+		*/
+		return self::_retrieve($id, $opts);
     }
     /**
-     * Updates a plan
+     * Updates an object
      *
-     * @param int $plan_id
-     * @param array $plan
+	 * @param int $id
+     * @param array $params
+     * @param array $opts
      * @return mixed
      */
-    public static function update($plan)
+    public static function update($id, $params = null, $opts = null)
     {
-        if (!is_numeric($plan['id'])) {
-            throw new \InvalidArgumentException('The plan id must be numeric.');
+        /*
+        if (!is_numeric($params['id'])) {
+            throw new \InvalidArgumentException('The launch button id must be numeric.');
         }
-        if (!is_array($plan)) {
-            throw new \InvalidArgumentException('The plan must be an array.');
+        if (!is_array($params)) {
+            throw new \InvalidArgumentException('Params must be an array.');
         }
-        $response = self::$client->patch('plans/' . $plan['id'], ['body' => json_encode($plan)]);
-        self::checkResponseStatusCode($response, 200);
-        return json_decode($response->getBody());
-    }
-     /**
-     * Delete the provided instance
-     *
-     * @param array $instance
-     *
-     * @return array()
-     */
-    public static function delete($plan)
-    {
-        if (isset($plan['id']) && !is_numeric($plan['id'])) {
-            throw new \InvalidArgumentException('The plan id must be numeric.');
-        }
-        $response = self::$client->delete('plans', ['query' => [$instance]]);
-        self::checkResponseStatusCode($response, 200);
-        return json_decode($response->getBody());
+		*/
+		return self::_update($id, $params, $opts);
     }
     /**
-     * Return all the plans of a given user
+     * Delete the provided object
      *
-     * @param array $conditions
+	 * @param int $id
+     * @param array $params
+     * @param array $opts
+	 *
+     * @return array()
+     */
+    public static function delete($id, $params = null, $opts = null)
+    {
+        /*
+		if (isset($params['id']) && !is_numeric($params['id'])) {
+            throw new \InvalidArgumentException('The launch button id must be numeric.');
+        }
+		*/
+		return self::_delete($id, $params, $opts);
+    }
+    /**
+     * Return all the objects of a given affiliate's user
+     *
+     * @param array $params
+     * @param array $opts
      *
      * @return array()
      */
-    public static function all($conditions)
+    public static function all($params = null, $opts = null)
     {
-        // user_id doesn't need to be set but if it is then it has to be numeric
-        if (isset($conditions['user_id']) && !is_numeric($conditions['user_id'])) {
+        /*
+		// user_id doesn't need to be set but if it is then it has to be numeric
+        if (isset($params['user_id']) && !is_numeric($params['user_id'])) {
             throw new \InvalidArgumentException('The user id must be numeric.');
         }
-         $response = self::$client->get('plans', ['query' => [$conditions]]);
-         self::checkResponseStatusCode($response, 200);
-         return json_decode($response->getBody());
-    }
+		*/
+		return self::_all($params, $opts);
+	}
 }

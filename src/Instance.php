@@ -6,99 +6,95 @@ use Wplauncher\Wplauncher;
 
 class Instance extends Wplauncher
 {
-    
-    /**
-     * Creates a new Instance
-     *=
-     * @param array $instance
+    public static $object_url = 'instances';
+	/**
+     * Creates a new Object
+     *
+     * @param array $params
+     * @param array $opts
      *
      * @return mixed
      */
-    public static function create($instance = [])
-    {
+    public static function create($params = null, $opts = null)
+    {   
         /*
-		    'name' => 'required|string',
-			'instance_type_id' => 'required|exists:instance_types,id|integer',
-			'price' => 'bail|required|integer',
-			'interval' => 'bail|required|exists:intervals,name|string',
-			'interval_count' => 'bail|required|integer',
-			'currency' => 'bail|required|string',
-			'trial_period_days' => 'integer',
-			'environment' => 'string'
-		*
 		if (!is_numeric($user_id)) {
      	    throw new \InvalidArgumentException('The user id must be numeric.');
      	}*/
-        
-        $response = self::$client->post('instance', ['body' => json_encode($instance)]);
-        self::checkResponseStatusCode($response, 201);
-        return json_decode($response->getBody());
+		
+		return self::_create($params, $opts);
     }
     /**
-     * Returns a specific instance
+     * Returns a specific object
      *
      * @param int $id
+     * @param array $opts
      *
      * @return mixed
      */
-    public static function retrieve($id)
+    public static function retrieve($id, $opts = null)
     {
+        /*
         if (!is_numeric($id)) {
-            throw new \InvalidArgumentException('The instance id must be numeric.');
+            throw new \InvalidArgumentException('The launch button id must be numeric.');
         }
-        $response = self::$client->get('instances/' . $id);
-        self::checkResponseStatusCode($response, 200);
-        return json_decode($response->getBody(), true);
+		*/
+		return self::_retrieve($id, $opts);
     }
     /**
-     * Updates a instance
+     * Updates an object
      *
-     * @param array $instance
+	 * @param int $id
+     * @param array $params
+     * @param array $opts
      * @return mixed
      */
-    public static function update($instance)
+    public static function update($id, $params = null, $opts = null)
     {
-        if (!is_numeric($instance['id'])) {
-            throw new \InvalidArgumentException('The instance id must be numeric.');
+        /*
+        if (!is_numeric($params['id'])) {
+            throw new \InvalidArgumentException('The launch button id must be numeric.');
         }
-        if (!is_array($instance)) {
-            throw new \InvalidArgumentException('The instance must be an array.');
+        if (!is_array($params)) {
+            throw new \InvalidArgumentException('Params must be an array.');
         }
-        $response = self::$client->patch('instances/' . $instance['id'], ['body' => json_encode($instance)]);
-        self::checkResponseStatusCode($response, 200);
-        return json_decode($response->getBody());
+		*/
+		return self::_update($id, $params, $opts);
     }
     /**
-     * Delete the provided instance
+     * Delete the provided object
      *
-     * @param array $instance
+	 * @param int $id
+     * @param array $params
+     * @param array $opts
+	 *
+     * @return array()
+     */
+    public static function delete($id, $params = null, $opts = null)
+    {
+        /*
+		if (isset($params['id']) && !is_numeric($params['id'])) {
+            throw new \InvalidArgumentException('The launch button id must be numeric.');
+        }
+		*/
+		return self::_delete($id, $params, $opts);
+    }
+    /**
+     * Return all the objects of a given affiliate's user
+     *
+     * @param array $params
+     * @param array $opts
      *
      * @return array()
      */
-    public static function delete($instance)
+    public static function all($params = null, $opts = null)
     {
-        if (isset($instance['id']) && !is_numeric($instance['id'])) {
-            throw new \InvalidArgumentException('The instance id must be numeric.');
-        }
-        $response = self::$client->delete('instances', ['query' => [$instance]]);
-        self::checkResponseStatusCode($response, 200);
-        return json_decode($response->getBody());
-    }
-    /**
-     * Return all the instances of a given affiliate's user
-     *
-     * @param array $conditions
-     *
-     * @return array()
-     */
-    public static function all($conditions)
-    {
-        // user_id doesn't need to be set but if it is then it has to be numeric
-        if (isset($conditions['user_id']) && !is_numeric($conditions['user_id'])) {
+        /*
+		// user_id doesn't need to be set but if it is then it has to be numeric
+        if (isset($params['user_id']) && !is_numeric($params['user_id'])) {
             throw new \InvalidArgumentException('The user id must be numeric.');
         }
-        $response = self::$client->get('instances', ['query' => [$conditions]]);
-        self::checkResponseStatusCode($response, 200);
-        return json_decode($response->getBody());
-    }
+		*/
+		return self::_all($params, $opts);
+	}    
 }

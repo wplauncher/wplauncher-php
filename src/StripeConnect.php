@@ -7,16 +7,19 @@ use Wplauncher\Wplauncher;
 class StripeConnect extends Wplauncher
 {
     
+    public static $object_url = 'connect/stripe';
+    
     /**
-     * Returns Stripe Connect Status
+     * Returns a specific object
      *
-     * @return array
+     * @param int $id
+     * @param array $opts
+     *
+     * @return mixed
      */
-    public static function retrieve()
+    public static function retrieve($id, $opts = null)
     {
-        $response = self::$client->get('connect/stripe');
-        self::checkResponseStatusCode($response, 200);
-        return json_decode($response->getBody(), true);
+		return self::_retrieve($id, $opts);
     }
     /**
      * May not need stripe callback because it's easier to just throw stripe directly to the api.wplauncher.com/v1/connect/stripe-callback
