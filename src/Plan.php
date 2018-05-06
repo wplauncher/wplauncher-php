@@ -6,7 +6,7 @@ use Wplauncher\Wplauncher;
 
 class Plan extends Wplauncher
 {
-    public static function __construct()
+    function __construct()
     {
         self::$object_url = 'plans';
     }
