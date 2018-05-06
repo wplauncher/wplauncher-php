@@ -6,7 +6,7 @@ use Wplauncher\Wplauncher;
 
 class Theme extends Wplauncher
 {
-    public static function _construct()
+    public static function __construct()
     {
         self::$object_url = 'themes';
     }
