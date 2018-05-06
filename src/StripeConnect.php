@@ -17,7 +17,7 @@ class StripeConnect extends Wplauncher
      *
      * @return mixed
      */
-    public static function retrieve($id, $opts = null)
+    public static function retrieve($id = null, $opts = null)
     {
         return self::_retrieve($id, $opts);
     }
