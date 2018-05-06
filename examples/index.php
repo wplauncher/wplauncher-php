@@ -6,7 +6,7 @@ require_once 'keys.php';
 $loader = new Twig_Loader_Filesystem(__DIR__ . '/examples/templates');
 $twig = new Twig_Environment($loader);
 
-\Wplauncher\WplauncherClient::setApiKey($wplauncher_access_token);
+\Wplauncher\Wplauncher::setApiKey($wplauncher_access_token);
 
 try {
     $plans = \Wplauncher\Plan::all();

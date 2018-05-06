@@ -4,17 +4,17 @@ namespace Wplauncher;
 
 use Wplauncher\Wplauncher;
 
-class Instance extends Wplauncher
+class LaunchButton extends Wplauncher
 {
 	
 	/**
-	 * Creates a new Instance
+	 * Creates a new Launch Button
 	 *=
-	 * @param array $instance
+	 * @param array $launch_button
 	 *
 	 * @return mixed
 	 */
-	public static function create($instance = []) {
+	public static function create($launch_button = []) {
 		/*
 		    'name' => 'required|string',
 			'instance_type_id' => 'required|exists:instance_types,id|integer',
@@ -29,12 +29,12 @@ class Instance extends Wplauncher
      	    throw new \InvalidArgumentException('The user id must be numeric.');
      	}*/
 		
-		$response = self::$client->post('instance', ['body' => json_encode($instance)]);
+		$response = self::$client->post('launch-button', ['body' => json_encode($launch_button)]);
 	    self::checkResponseStatusCode($response, 201);
 	    return json_decode($response->getBody());
 	}
 	/**
-	 * Returns a specific instance
+	 * Returns a specific launch button
 	 *
 	 * @param int $id
 	 *
@@ -42,46 +42,46 @@ class Instance extends Wplauncher
 	 */
 	public static function retrieve($id) {
 	    if (!is_numeric($id)) {
-	        throw new \InvalidArgumentException('The instance id must be numeric.');
+	        throw new \InvalidArgumentException('The launch button id must be numeric.');
 	    }
-	    $response = self::$client->get('instances/' . $id);
+	    $response = self::$client->get('launch-buttons/' . $id);
 	    self::checkResponseStatusCode($response, 200);
 	    return json_decode($response->getBody(), true);
 	}
 	/**
-	 * Updates a instance
+	 * Updates a launch button
 	 *
-	 * @param array $instance
+	 * @param array $launch_button
 	 * @return mixed
 	 */
-	public static function update($instance) {
-	    if (!is_numeric($instance['id'])) {
-	        throw new \InvalidArgumentException('The instance id must be numeric.');
+	public static function update($launch_button) {
+	    if (!is_numeric($launch_button['id'])) {
+	        throw new \InvalidArgumentException('The launch button id must be numeric.');
 	    } 
-		if (!is_array($instance)) {
-	        throw new \InvalidArgumentException('The instance must be an array.');
+		if (!is_array($launch_button)) {
+	        throw new \InvalidArgumentException('The launch button must be an array.');
 	    }
-	    $response = self::$client->patch('instances/' . $instance['id'], ['body' => json_encode($instance)]);
+	    $response = self::$client->patch('launch-buttons/' . $launch_button['id'], ['body' => json_encode($launch_button)]);
 	    self::checkResponseStatusCode($response, 200);
 	    return json_decode($response->getBody());
 	}
 	/**
-	 * Delete the provided instance
+	 * Delete the provided launch button
 	 *
-	 * @param array $instance
+	 * @param array $launch_button
 	 *
 	 * @return array()
 	 */
-	 public static function delete($instance) {
-		 if (isset($instance['id']) && !is_numeric($instance['id'])) {
-	         throw new \InvalidArgumentException('The instance id must be numeric.');
+	 public static function delete($launch_button) {
+		 if (isset($launch_button['id']) && !is_numeric($launch_button['id'])) {
+	         throw new \InvalidArgumentException('The launch button id must be numeric.');
 	     }
-	     $response = self::$client->delete('instances', ['query' => [$instance]]);
+	     $response = self::$client->delete('launch-buttons', ['query' => [$launch_button]]);
 	     self::checkResponseStatusCode($response, 200);
 	     return json_decode($response->getBody());
 	 }
 	/**
-	 * Return all the instances of a given affiliate's user
+	 * Return all the launch buttons of a given affiliate's user
 	 *
 	 * @param array $conditions
 	 *
@@ -92,7 +92,7 @@ class Instance extends Wplauncher
 		 if (isset($conditions['user_id']) && !is_numeric($conditions['user_id'])) {
 	         throw new \InvalidArgumentException('The user id must be numeric.');
 	     }
-	     $response = self::$client->get('instances', ['query' => [$conditions]]);
+	     $response = self::$client->get('launch-buttons', ['query' => [$conditions]]);
 	     self::checkResponseStatusCode($response, 200);
 	     return json_decode($response->getBody());
 	 }

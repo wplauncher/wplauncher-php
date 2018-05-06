@@ -2,12 +2,9 @@
 
 namespace Wplauncher;
 
-use GuzzleHttp\ClientInterface;
-use GuzzleHttp\Client;
-use Psr\Http\Message\ResponseInterface;
-use Wplauncher\WplauncherClient;
+use Wplauncher\Wplauncher;
 
-class Plan extends WplauncherClient
+class Plan extends Wplauncher
 {
 	/**
 	 * Creates a new Plan

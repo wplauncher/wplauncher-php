@@ -33,7 +33,7 @@ $ composer require wplauncher/wplauncher-php
 ## Usage
 
 ``` php
-\Wplauncher\WplauncherClient::setApiKey($wplauncher_access_token);
+\Wplauncher\Wplauncher::setApiKey($wplauncher_access_token);
 $instance = \Wplauncher\Instance::create($instance);
 $instance = \Wplauncher\Instance::retrieve($instance_id);
 $instance = \Wplauncher\Instance::update($instance);

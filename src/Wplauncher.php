@@ -2,11 +2,10 @@
 
 namespace Wplauncher;
 
-use GuzzleHttp\ClientInterface;
 use GuzzleHttp\Client;
 use Psr\Http\Message\ResponseInterface;
 
-class WplauncherClient
+class Wplauncher
 {
     
 	/**
@@ -14,10 +13,6 @@ class WplauncherClient
 	 * protected shares this with the extended classes
 	 */
 	public static $client;
-	
-    public function __construct()
-    {
-    }
 	
     /**
      * Create a new WPLauncher Instance
