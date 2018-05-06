@@ -19,7 +19,7 @@ class StripeConnect extends Wplauncher
      */
     public static function retrieve($id, $opts = null)
     {
-		return self::_retrieve($id, $opts);
+        return self::_retrieve($id, $opts);
     }
     /**
      * May not need stripe callback because it's easier to just throw stripe directly to the api.wplauncher.com/v1/connect/stripe-callback

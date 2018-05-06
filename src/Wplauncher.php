@@ -40,7 +40,7 @@ class Wplauncher
      * @return mixed
      */
     public static function _create($params = null, $opts = null)
-    {   
+    {
         $response = self::$client->post(self::$object_url, ['body' => json_encode($params)]);
         self::checkResponseStatusCode($response, 201);
         return json_decode($response->getBody());
@@ -62,7 +62,7 @@ class Wplauncher
     /**
      * Updates an object
      *
-	 * @param int $id
+     * @param int $id
      * @param array $params
      * @param array $opts
      * @return mixed
@@ -82,10 +82,10 @@ class Wplauncher
     /**
      * Delete the provided object
      *
-	 * @param int $id
+     * @param int $id
      * @param array $params
      * @param array $opts
-	 *
+     *
      * @return array()
      */
     public static function _delete($id, $params = null, $opts = null)
