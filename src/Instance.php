@@ -6,7 +6,11 @@ use Wplauncher\Wplauncher;
 
 class Instance extends Wplauncher
 {
-    public static $object_url = 'instances';
+    public static function _construct()
+    {
+        self::$object_url = 'instances';
+    }
+    
     /**
      * Creates a new Object
      *

@@ -9,10 +9,15 @@ class Wplauncher
 {
     
     /**
-     * @var Client
-     * protected shares this with the extended classes
+     * @var client
      */
     public static $client;
+    
+    /**
+     * @var object_url
+     * endpoint for each object
+     */
+    public static $object_url;
     
     /**
      * Create a new WPLauncher Instance

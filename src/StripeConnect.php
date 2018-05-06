@@ -7,7 +7,10 @@ use Wplauncher\Wplauncher;
 class StripeConnect extends Wplauncher
 {
     
-    public static $object_url = 'connect/stripe';
+    public static function _construct()
+    {
+        self::$object_url = 'connect/stripe';
+    }
     
     /**
      * Returns a specific object
@@ -17,7 +20,7 @@ class StripeConnect extends Wplauncher
      *
      * @return mixed
      */
-    public static function retrieve($id = null, $opts = null)
+    public static function retrieve($id = '', $opts = null)
     {
         return self::_retrieve($id, $opts);
     }
