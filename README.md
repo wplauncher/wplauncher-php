@@ -11,11 +11,8 @@ The WPLauncher PHP SDK allows you to easily turn your website into a WordPress H
 
 ## Structure
 
-If any of the following are applicable to your project, then the directory structure should follow industry best practices by being named the following.
-
-```
-bin/        
-config/
+```    
+examples/
 src/
 tests/
 vendor/

@@ -1,8 +1,8 @@
 # Changelog
 
-All notable changes to `wplauncher-php` will be documented in this file.
+All notable changes to the production version of `wplauncher-php` will be documented in this file.
 
-Updates should follow the [Keep a CHANGELOG](http://keepachangelog.com/) principles.
+The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/) and we try to follow [SemVer v2.0.0](http://semver.org/). 
 
 ## NEXT - YYYY-MM-DD
 
