@@ -8,7 +8,7 @@ class Instance extends Wplauncher
 {
     public function __construct()
     {
-        self::$object_url = 'instances';
+        parent::$object_url = 'instances';
     }
     
     /**

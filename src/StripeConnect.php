@@ -9,7 +9,7 @@ class StripeConnect extends Wplauncher
     
     public function __construct()
     {
-        self::$object_url = 'connect/stripe';
+        parent::$object_url = 'connect/stripe';
     }
     
     /**
