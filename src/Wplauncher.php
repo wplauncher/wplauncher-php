@@ -36,6 +36,41 @@ class Wplauncher
         );
         self::$client = $wplauncher_guzzle;
     }
+	
+    /**
+     * @return string The name of the class, with namespacing and underscores
+     *    stripped.
+     */
+    public static function className()
+    {
+        $class = get_called_class();
+        // Useful for namespaces: Foo\Instance
+        if ($postfixNamespaces = strrchr($class, '\\')) {
+            $class = substr($postfixNamespaces, 1);
+        }
+        if (substr($class, 0, strlen('Wplauncher')) == 'Wplauncher') {
+            $class = substr($class, strlen('Wplauncher'));
+        }
+        $class = str_replace('_', '', $class);
+        $name = urlencode($class);
+        $name = strtolower(preg_replace('%([a-z])([A-Z])%', '\1-\2', $name));
+        return $name;
+    }
+
+    /**
+     * @return string The endpoint URL for the given class.
+     */
+    public static function classUrl()
+    {
+        $base = static::className();
+		if($base != 'connect-stripe'){
+			return "${base}s";
+		} else {
+			return "$base";
+		}
+        
+    }
+	
     /**
      * Creates a new Object
      *
@@ -46,7 +81,8 @@ class Wplauncher
      */
     public static function _create($params = null, $opts = null)
     {
-        $response = self::$client->post(self::$object_url, ['body' => json_encode($params)]);
+        $object_url = self::classUrl();
+		$response = self::$client->post($object_url, ['body' => json_encode($params)]);
         self::checkResponseStatusCode($response, 201);
         return json_decode($response->getBody());
     }
@@ -60,7 +96,8 @@ class Wplauncher
      */
     public static function _retrieve($id, $opts = null)
     {
-        $response = self::$client->get(self::$object_url . '/' . $id);
+        $object_url = self::classUrl();
+		$response = self::$client->get($object_url . '/' . $id);
         self::checkResponseStatusCode($response, 200);
         return json_decode($response->getBody(), true);
     }
@@ -80,7 +117,8 @@ class Wplauncher
         if (!is_array($params)) {
             throw new \InvalidArgumentException('Params must be an array.');
         }
-        $response = self::$client->patch(self::$object_url . '/' . $id, ['body' => json_encode($params)]);
+		$object_url = self::classUrl();
+        $response = self::$client->patch($object_url . '/' . $id, ['body' => json_encode($params)]);
         self::checkResponseStatusCode($response, 200);
         return json_decode($response->getBody());
     }
@@ -98,7 +136,8 @@ class Wplauncher
         if (isset($id) && !is_numeric($id)) {
             throw new \InvalidArgumentException('The object id must be numeric.');
         }
-        $response = self::$client->delete(self::$object_url, ['query' => [$params]]);
+		$object_url = self::classUrl();
+        $response = self::$client->delete($object_url, ['query' => [$params]]);
         self::checkResponseStatusCode($response, 200);
         return json_decode($response->getBody());
     }
@@ -116,7 +155,8 @@ class Wplauncher
         if (isset($params['user_id']) && !is_numeric($params['user_id'])) {
             throw new \InvalidArgumentException('The user id must be numeric.');
         }
-        $response = self::$client->get(self::$object_url, ['query' => [$params]]);
+		$object_url = self::classUrl();
+        $response = self::$client->get($object_url, ['query' => [$params]]);
         self::checkResponseStatusCode($response, 200);
         return json_decode($response->getBody());
     }

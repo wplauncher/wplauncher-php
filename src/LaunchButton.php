@@ -22,10 +22,7 @@ use Wplauncher\Wplauncher;
 
 class LaunchButton extends Wplauncher
 {
-    public function __callStatic($name, $arguments)
-    {
-        parent::$object_url = 'launch-buttons';
-    }
+	
     /**
      * Creates a new Object
      *

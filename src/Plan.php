@@ -6,10 +6,7 @@ use Wplauncher\Wplauncher;
 
 class Plan extends Wplauncher
 {
-    public function __callStatic($name, $arguments)
-    {
-        parent::$object_url = 'plans';
-    }
+	
     /**
      * Creates a new Object
      *

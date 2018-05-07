@@ -4,14 +4,9 @@ namespace Wplauncher;
 
 use Wplauncher\Wplauncher;
 
-class StripeConnect extends Wplauncher
+class ConnectStripe extends Wplauncher
 {
-    
-    public function __callStatic($name, $arguments)
-    {
-        parent::$object_url = 'connect/stripe';
-    }
-    
+	
     /**
      * Returns a specific object
      *
@@ -22,7 +17,7 @@ class StripeConnect extends Wplauncher
      */
     public static function retrieve($id = null, $opts = null)
     {
-        if(!$id){
+		if(!$id){
         	$id = '';
         }
 		return self::_retrieve($id, $opts);

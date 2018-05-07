@@ -6,10 +6,6 @@ use Wplauncher\Wplauncher;
 
 class Instance extends Wplauncher
 {
-    public function __callStatic($name, $arguments)
-    {
-        parent::$object_url = 'instances';
-    }
     
     /**
      * Creates a new Object
