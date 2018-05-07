@@ -6,9 +6,9 @@ use Wplauncher\Wplauncher;
 
 class Theme extends Wplauncher
 {
-    public function __construct()
+    public function __callStatic()
     {
-        parent::$object_url = 'themes';
+        self::$object_url = 'themes';
     }
     /**
      * Creates a new Object

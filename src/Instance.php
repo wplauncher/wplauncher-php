@@ -6,9 +6,9 @@ use Wplauncher\Wplauncher;
 
 class Instance extends Wplauncher
 {
-    public function __construct()
+    public function __callStatic()
     {
-        parent::$object_url = 'instances';
+        self::$object_url = 'instances';
     }
     
     /**
