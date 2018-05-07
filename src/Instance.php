@@ -6,7 +6,7 @@ use Wplauncher\Wplauncher;
 
 class Instance extends Wplauncher
 {
-    function __construct()
+    public function __construct()
     {
         self::$object_url = 'instances';
     }

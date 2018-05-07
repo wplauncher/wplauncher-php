@@ -22,7 +22,7 @@ use Wplauncher\Wplauncher;
 
 class LaunchButton extends Wplauncher
 {
-    function __construct()
+    public function __construct()
     {
         self::$object_url = 'launch-buttons';
     }

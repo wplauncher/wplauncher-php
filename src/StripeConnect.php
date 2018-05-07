@@ -7,7 +7,7 @@ use Wplauncher\Wplauncher;
 class StripeConnect extends Wplauncher
 {
     
-    function __construct()
+    public function __construct()
     {
         self::$object_url = 'connect/stripe';
     }
