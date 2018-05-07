@@ -8,7 +8,7 @@ class Plan extends Wplauncher
 {
     public function __callStatic($name, $arguments)
     {
-        self::$object_url = 'plans';
+        parent::$object_url = 'plans';
     }
     /**
      * Creates a new Object

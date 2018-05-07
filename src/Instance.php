@@ -8,7 +8,7 @@ class Instance extends Wplauncher
 {
     public function __callStatic($name, $arguments)
     {
-        self::$object_url = 'instances';
+        parent::$object_url = 'instances';
     }
     
     /**

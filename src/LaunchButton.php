@@ -24,7 +24,7 @@ class LaunchButton extends Wplauncher
 {
     public function __callStatic($name, $arguments)
     {
-        self::$object_url = 'launch-buttons';
+        parent::$object_url = 'launch-buttons';
     }
     /**
      * Creates a new Object

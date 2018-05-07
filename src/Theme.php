@@ -8,7 +8,7 @@ class Theme extends Wplauncher
 {
     public function __callStatic($name, $arguments)
     {
-        self::$object_url = 'themes';
+        parent::$object_url = 'themes';
     }
     /**
      * Creates a new Object
