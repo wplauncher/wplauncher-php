@@ -15,11 +15,8 @@ class ConnectStripe extends Wplauncher
      *
      * @return mixed
      */
-    public static function retrieve($id = null, $opts = null)
+    public static function retrieve($id = '', $opts = null)
     {
-		if(!$id){
-        	$id = '';
-        }
 		return self::_retrieve($id, $opts);
     }
     /**
