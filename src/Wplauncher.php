@@ -63,10 +63,10 @@ class Wplauncher
     public static function classUrl()
     {
         $base = static::className();
-		if($base != 'connect-stripe'){
-			return "${base}s";
-		} else {
+		if($base == 'connect-stripe'){
 			return "$base";
+		} else {
+			return "${base}s";
 		}
         
     }
@@ -82,7 +82,7 @@ class Wplauncher
     public static function _create($params = null, $opts = null)
     {
         $object_url = self::classUrl();
-		$response = self::$client->post($object_url, ['body' => json_encode($params)]);
+		$response = self::$client->post($object_url, ['form_params' => $params]);
         self::checkResponseStatusCode($response, 201);
         return json_decode($response->getBody());
     }
