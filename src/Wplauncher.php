@@ -118,7 +118,8 @@ class Wplauncher
             throw new \InvalidArgumentException('Params must be an array.');
         }
 		$object_url = self::classUrl();
-        $response = self::$client->patch($object_url . '/' . $id, ['body' => json_encode($params)]);
+		//PUT v PATCH - https://stackoverflow.com/questions/28459418/rest-api-put-vs-patch-with-real-life-examples
+        $response = self::$client->patch($object_url . '/' . $id, ['form_params' => $params]);
         self::checkResponseStatusCode($response, 200);
         return json_decode($response->getBody());
     }
