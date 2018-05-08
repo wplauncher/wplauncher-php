@@ -84,7 +84,7 @@ class Wplauncher
         $object_url = self::classUrl();
 		$response = self::$client->post($object_url, ['form_params' => $params]);
         self::checkResponseStatusCode($response, 201);
-        return json_decode($response->getBody());
+        return json_decode($response->getBody(), true);
     }
     /**
      * Returns a specific object
@@ -121,7 +121,7 @@ class Wplauncher
 		//PUT v PATCH - https://stackoverflow.com/questions/28459418/rest-api-put-vs-patch-with-real-life-examples
         $response = self::$client->patch($object_url . '/' . $id, ['form_params' => $params]);
         self::checkResponseStatusCode($response, 200);
-        return json_decode($response->getBody());
+        return json_decode($response->getBody(), true);
     }
     /**
      * Delete the provided object
@@ -140,7 +140,7 @@ class Wplauncher
 		$object_url = self::classUrl();
         $response = self::$client->delete($object_url, ['query' => [$params]]);
         self::checkResponseStatusCode($response, 200);
-        return json_decode($response->getBody());
+        return json_decode($response->getBody(), true);
     }
     /**
      * Return all the objects of a given affiliate's user
@@ -159,7 +159,7 @@ class Wplauncher
 		$object_url = self::classUrl();
         $response = self::$client->get($object_url, ['query' => [$params]]);
         self::checkResponseStatusCode($response, 200);
-        return json_decode($response->getBody());
+        return json_decode($response->getBody(), true);
     }
     /**
      * Check the response status code.
