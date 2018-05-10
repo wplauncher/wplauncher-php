@@ -8,18 +8,16 @@ class ConnectStripeCallback extends Wplauncher
 {
 	
     /**
-     * Returns a specific object
+     * Creates a new Object
      *
-     * @param int $id
+     * @param array $params
      * @param array $opts
      *
      * @return mixed
      */
-    public static function retrieve($id = '', $opts = null)
+    public static function create($params = null, $opts = null)
     {
-		return self::_retrieve($id, $opts);
+        
+        return self::_create($params, $opts);
     }
-    /**
-     * May not need stripe callback because it's easier to just throw stripe directly to the api.wplauncher.com/v1/connect/stripe-callback
-    */
 }
