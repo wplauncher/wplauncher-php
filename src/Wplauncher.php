@@ -79,7 +79,7 @@ class Wplauncher
      *
      * @return mixed
      */
-    public static function _create($params = null, $opts = null)
+    public static function _create($params = array(), $opts = null)
     {
         $object_url = self::classUrl();
 		$response = self::$client->post($object_url, ['form_params' => $params]);
@@ -109,7 +109,7 @@ class Wplauncher
      * @param array $opts
      * @return mixed
      */
-    public static function _update($id, $params = null, $opts = null)
+    public static function _update($id, $params = array(), $opts = null)
     {
         if (!is_numeric($id)) {
             throw new \InvalidArgumentException('The object id must be numeric.');
@@ -132,13 +132,13 @@ class Wplauncher
      *
      * @return array()
      */
-    public static function _delete($id, $params = null, $opts = null)
+    public static function _delete($id, $params = array(), $opts = null)
     {
         if (isset($id) && !is_numeric($id)) {
             throw new \InvalidArgumentException('The object id must be numeric.');
         }
 		$object_url = self::classUrl();
-        $response = self::$client->delete($object_url, ['query' => [$params]]);
+        $response = self::$client->delete($object_url, ['query' => $params]);
         self::checkResponseStatusCode($response, 200);
         return json_decode($response->getBody(), true);
     }
@@ -150,14 +150,14 @@ class Wplauncher
      *
      * @return array()
      */
-    public static function _all($params = null, $opts = null)
+    public static function _all($params = array(), $opts = null)
     {
         // user_id doesn't need to be set but if it is then it has to be numeric
         if (isset($params['user_id']) && !is_numeric($params['user_id'])) {
             throw new \InvalidArgumentException('The user id must be numeric.');
         }
 		$object_url = self::classUrl();
-        $response = self::$client->get($object_url, ['query' => [$params]]);
+        $response = self::$client->get($object_url, ['query' => $params]);
         self::checkResponseStatusCode($response, 200);
         return json_decode($response->getBody(), true);
     }
