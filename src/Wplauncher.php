@@ -63,7 +63,7 @@ class Wplauncher
     public static function classUrl()
     {
         $base = static::className();
-		if($base == 'connect-stripe' || $base == 'connect-stripe-callback'){
+		if($base == 'connect-stripe' || $base == 'connect-stripe-callback' || $base == 'sftp'){
 			return "$base";
 		} else {
 			return "${base}s";
