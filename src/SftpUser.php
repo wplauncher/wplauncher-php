@@ -14,7 +14,7 @@ use Wplauncher\Wplauncher;
  * @package Wplauncher
  */
 
-class Sftp extends Wplauncher
+class SftpUser extends Wplauncher
 {
 	
     /**
