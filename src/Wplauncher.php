@@ -65,7 +65,9 @@ class Wplauncher
         $base = static::className();
 		if($base == 'connect-stripe' || $base == 'connect-stripe-callback'){
 			return "$base";
-		} else {
+		} elseif(substr($base, -1) == 'y'){
+            return "${base}ies";
+        } else {
 			return "${base}s";
 		}
         
