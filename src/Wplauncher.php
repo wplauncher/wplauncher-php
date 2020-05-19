@@ -140,7 +140,7 @@ class Wplauncher
             throw new \InvalidArgumentException('The object id must be numeric.');
         }
 		$object_url = self::classUrl();
-        $response = self::$client->delete($object_url, ['query' => $params]);
+        $response = self::$client->patch($object_url . '/' . $id, ['form_params' => $params]);
         self::checkResponseStatusCode($response, 200);
         return json_decode($response->getBody(), true);
     }
