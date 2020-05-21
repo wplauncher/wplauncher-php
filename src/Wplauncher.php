@@ -134,14 +134,15 @@ class Wplauncher
      *
      * @return array()
      */
-    public static function _delete($id, $params = array('_method'=>'DELETE'), $opts = null)
+    public static function _delete($id, $params = array(), $opts = null)
     {
         if (isset($id) && !is_numeric($id)) {
             throw new \InvalidArgumentException('The object id must be numeric.');
         }
-        $object_url = self::classUrl();
-        
-        $response = self::$client->patch($object_url . '/' . $id, ['form_params' => $params]);
+
+		$object_url = self::classUrl();
+        $response = self::$client->delete($object_url, ['query' => $params]);
+
         self::checkResponseStatusCode($response, 200);
         return json_decode($response->getBody(), true);
     }
