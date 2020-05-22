@@ -139,10 +139,14 @@ class Wplauncher
         if (isset($id) && !is_numeric($id)) {
             throw new \InvalidArgumentException('The object id must be numeric.');
         }
+        if(empty($params)){
+            $params = array('_method'=>'DELETE');
+        } else {
+            $params = array_merge($params, array('_method'=>'DELETE'));
+        }
 
 		$object_url = self::classUrl();
-        $response = self::$client->delete($object_url, ['query' => $params]);
-
+		$response = self::$client->post($object_url, ['form_params' => $params]);
         self::checkResponseStatusCode($response, 200);
         return json_decode($response->getBody(), true);
     }
