@@ -146,7 +146,7 @@ class Wplauncher
         }
 
 		$object_url = self::classUrl();
-		$response = self::$client->post($object_url, ['form_params' => $params]);
+		$response = self::$client->post($object_url . '/' . $id, ['form_params' => $params]);
         self::checkResponseStatusCode($response, 200);
         return json_decode($response->getBody(), true);
     }
